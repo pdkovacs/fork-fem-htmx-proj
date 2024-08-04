@@ -1,0 +1,14 @@
+{{ block "head" . }}
+    <title>Index page</title>
+    {{ template "scripts" . }}
+{{ end }}
+{{ block "body" . }}
+    <div class="toc">
+    </div>
+        <div class="d-flex.flex-column">
+        <button class="btn btn-light"/>
+        <button class="btn mt-1 btn-light" hx-get="/memory-consumption-test" hx-target="body" hx-push-url="true">
+            Memory increase test
+        </button>
+    </div>
+{{ end }}

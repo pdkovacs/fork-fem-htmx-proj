@@ -1,0 +1,19 @@
+{{ block "in-progress" . }}
+<button
+    class="btn btn-outline-secondary"
+    type="button"
+    hx-post="/memory-consumption-test/stop"
+    hx-target="#progress-control"
+>
+    Stop consuming backend memory
+</button>
+
+<div id="progress-poller" hx-swap-oob="div#progress-poller">
+    <div hx-get="/memory-consumption-test/poll" hx-trigger="every 2s" />
+    {{ template "consumed" . }}
+</div>
+{{ end }}
+
+{{ block "consumed" . }}
+<div>Memory consumed: {{ .Consumed }}</div>
+{{ end }}

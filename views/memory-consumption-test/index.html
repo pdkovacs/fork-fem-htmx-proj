@@ -1,0 +1,29 @@
+{{ block "head" . }}
+<head>
+    <title>Memory consumption-increase test</title>
+    {{ template "scripts" . }}
+</head>
+{{ end }}
+
+{{ block "body" . }}
+<div class="col px-3 py-3">
+    <form hx-post="/memory-consumption-test/start" hx-target="#progress-control">
+        <div class="col py-3">
+            <div>
+                <input class="form-control my-3" name="increment_size" placeholder="Increment size in MB?" autofocus=""/>
+                <input class="form-control my-3" name="increment_interval" placeholder="Increment interval in milliseconds" autofocus=""/>
+                <div id="progress-control">
+                    {{ template "start-button" }}
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="progress-poller"></div>
+</div>
+{{ end }}
+
+{{ define "start-button" }}
+<button class="btn btn-outline-secondary" type="submit">
+    Start consuming backend memory
+</button>
+{{ end }}
